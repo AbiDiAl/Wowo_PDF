@@ -1,0 +1,204 @@
+/* Styling Offline Theme (Slate Gray) saat tidak ada koneksi */
+.offline-theme {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+}
+
+/* --------------------------------------------------
+   1. Active Tab Styling (Navigasi Kiri)
+   -------------------------------------------------- */
+.tab-btn {
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-btn.active-tab {
+  background-color: rgba(244, 63, 94, 0.15) !important; /* Soft Rose Highlight */
+  border-color: #f43f5e !important;
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+}
+
+.tab-btn.active-tab span {
+  color: #881337 !important;
+}
+
+/* --------------------------------------------------
+   2. Offline Mode Dynamic Overrides (Dark Grey / Slate)
+   -------------------------------------------------- */
+body.offline-mode {
+  background-color: #1e293b !important; /* Dark Slate Background */
+  color: #f8fafc !important;
+}
+
+/* Container Utama */
+body.offline-mode #appContainer {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+}
+
+/* Header, Sidebar, dan Viewport */
+body.offline-mode header,
+body.offline-mode aside,
+body.offline-mode main,
+body.offline-mode #previewViewport {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+}
+
+/* Element Kartu & Baris Kontrol */
+body.offline-mode .bg-white\/90,
+body.offline-mode .bg-white\/80,
+body.offline-mode .bg-white\/70,
+body.offline-mode .bg-white,
+body.offline-mode .bg-rose-50\/40,
+body.offline-mode .bg-rose-50\/50,
+body.offline-mode .bg-rose-50\/60,
+body.offline-mode .bg-rose-50\/80,
+body.offline-mode .bg-rose-50,
+body.offline-mode .bg-rose-100\/30,
+body.offline-mode .bg-rose-100\/70,
+body.offline-mode .bg-rose-200\/20,
+body.offline-mode .bg-pink-50\/50 {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+}
+
+/* Teks dan Judul */
+body.offline-mode .text-rose-950,
+body.offline-mode .text-rose-900,
+body.offline-mode .text-rose-800,
+body.offline-mode .text-rose-700 {
+  color: #f1f5f9 !important;
+}
+
+body.offline-mode .text-rose-600,
+body.offline-mode .text-rose-500,
+body.offline-mode .text-rose-400 {
+  color: #94a3b8 !important;
+}
+
+/* Border Overrides */
+body.offline-mode .border-rose-200,
+body.offline-mode .border-rose-200\/80,
+body.offline-mode .border-rose-200\/70,
+body.offline-mode .border-rose-200\/60,
+body.offline-mode .border-rose-300,
+body.offline-mode .border-pink-300 {
+  border-color: #475569 !important;
+}
+
+/* Tombol Aksi & Gradien Utama di Mode Offline */
+body.offline-mode .bg-gradient-to-r,
+body.offline-mode .bg-rose-500,
+body.offline-mode .bg-pink-500 {
+  background: #475569 !important;
+  color: #f8fafc !important;
+}
+
+body.offline-mode .bg-rose-500:hover,
+body.offline-mode .bg-pink-500:hover {
+  background: #64748b !important;
+}
+
+/* Tombol Kecil / Navigasi */
+body.offline-mode button.bg-rose-50 {
+  background-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+body.offline-mode button.bg-rose-50:hover {
+  background-color: #475569 !important;
+}
+
+/* Tab Aktif pada Mode Offline */
+body.offline-mode .tab-btn.active-tab {
+  background-color: #475569 !important;
+  border-color: #94a3b8 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.offline-mode .tab-btn.active-tab span {
+  color: #ffffff !important;
+}
+
+/* Custom Styling untuk Interactive E-Sign Box & Control Handles */
+.esign-box {
+  border: 1.5px dashed #f43f5e;
+  border-radius: 4px;
+  user-select: none;
+  touch-action: none;
+}
+
+.esign-box img {
+  mix-blend-mode: multiply; /* Menyatu alami dengan teks di preview DOM */
+}
+
+.esign-box.selected {
+  border: 2px solid #e11d48 !important;
+  box-shadow: 0 0 8px rgba(225, 29, 72, 0.4);
+}
+
+/* Tombol Rotate (Atas) */
+.esign-handle-rotate {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #f43f5e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 60;
+}
+
+/* Tombol Resize (Kanan Bawah) */
+.esign-handle-resize {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border: 1px solid #f43f5e;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: nwse-resize;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 60;
+}
+
+/* Tombol Delete (Kanan Atas) */
+.esign-delete-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 60;
+}
+
+.esign-handle-rotate:hover,
+.esign-handle-resize:hover,
+.esign-delete-btn:hover {
+  transform: scale(1.15) translateX(0);
+}
