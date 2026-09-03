@@ -1,204 +1,275 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Wowo_PDF</title>
+/* --------------------------------------------------
+   1. Active Tab Styling (Navigasi Kiri)
+   -------------------------------------------------- */
+.tab-btn {
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
 
-  <!-- PWA Manifest & Theme Color -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#f43f5e">
+.tab-btn.active-tab {
+  background-color: rgba(244, 63, 94, 0.15) !important; /* Soft Rose Highlight */
+  border-color: #f43f5e !important;
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+}
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <link rel="stylesheet" href="css/custom.css">
-  
-  <link rel="icon" type="image/gif" href="assets/icons/madness.gif">
-  <style>
-    .no-init-transition {
-      transition: none !important;
-    }
-  </style>
-</head>
-<body class="bg-rose-100 text-slate-800 min-h-screen flex items-center justify-center p-1.5 md:p-3 font-sans antialiased transition-colors duration-300">
+.tab-btn.active-tab span {
+  color: #881337 !important;
+}
 
-  <div id="appContainer" class="w-full max-w-[98vw] bg-rose-50 rounded-2xl shadow-2xl border border-rose-200 overflow-hidden flex flex-col h-auto md:h-[96vh] min-h-screen md:min-h-0 transition-colors duration-300">
+/* --------------------------------------------------
+   2. Offline Mode (Dark Slate Gray Theme & Glow Effects)
+   -------------------------------------------------- */
+/* Background Utama Aplikasi */
+body.offline-mode {
+  background-color: #0f172a !important; /* Dark Slate 900 */
+  color: #f8fafc !important;
+}
 
-    <header class="bg-rose-100/80 border-b border-rose-200 px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 shrink-0 relative backdrop-blur-sm transition-colors duration-300">
-      
-      <!-- Logo & Judul Kiri -->
-      <div class="flex items-center space-x-3 transition-transform hover:scale-105 cursor-pointer">
-        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-400 p-1 flex items-center justify-center shadow-md shadow-rose-500/20 overflow-hidden shrink-0">
-          <img src="assets/icons/madness.gif" alt="Wowo_PDF Logo" class="w-full h-full object-contain rounded-lg">
-        </div>
-        <div class="text-left">
-          <h1 class="text-xl font-extrabold tracking-tight text-rose-950 leading-none">Wowo_PDF</h1>
-          <p class="text-[10px] text-rose-400 font-semibold tracking-wide mt-1">Web Edition</p>
-        </div>
-      </div>
+/* Container Utama & Panel-panel */
+body.offline-mode #appContainer {
+  background-color: #1e293b !important; /* Slate 800 */
+  border-color: #334155 !important;
+}
 
-      <!-- Live Center Status & Notification Banner -->
-      <div id="headerStatusBanner" class="hidden opacity-0 transform -translate-y-2 transition-all duration-300 ease-out flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-rose-200 shadow-sm backdrop-blur-md">
-        <div id="headerStatusSpinner" class="hidden animate-spin w-4 h-4 border-2 border-rose-500 border-t-transparent rounded-full"></div>
-        <span id="headerStatusIcon" class="text-sm select-none">🚀</span>
-        <span id="headerStatusText" class="text-xs font-bold text-rose-900 tracking-wide">Ready to go!</span>
-      </div>
+body.offline-mode header,
+body.offline-mode aside,
+body.offline-mode main,
+body.offline-mode #previewViewport {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
 
-      <!-- Sisi Kanan: Status Toggle Network -->
-      <div class="flex items-center space-x-3">
-        <div class="flex items-center gap-2 bg-rose-50 p-1 px-2.5 rounded-full border border-rose-200 shadow-inner">
-          <div id="statusToggleTrack" class="w-9 h-5 bg-rose-500 rounded-full p-0.5 no-init-transition flex items-center cursor-default">
-            <div id="statusToggleCircle" class="w-3.5 h-3.5 bg-white rounded-full shadow-md transform translate-x-4 no-init-transition"></div>
-          </div>
-          <span id="statusToggleText" class="text-[11px] font-semibold text-rose-700 select-none">
-            Online Mode
-          </span>
-        </div>
-      </div>
+/* Element Kartu & Kontainer Dalam */
+body.offline-mode .bg-white\/90,
+body.offline-mode .bg-white\/80,
+body.offline-mode .bg-white\/70,
+body.offline-mode .bg-white,
+body.offline-mode .bg-rose-50\/40,
+body.offline-mode .bg-rose-50\/50,
+body.offline-mode .bg-rose-50\/60,
+body.offline-mode .bg-rose-50\/80,
+body.offline-mode .bg-rose-50,
+body.offline-mode .bg-rose-100\/30,
+body.offline-mode .bg-rose-100\/60,
+body.offline-mode .bg-rose-100\/70,
+body.offline-mode .bg-rose-100\/80,
+body.offline-mode .bg-rose-100,
+body.offline-mode .bg-rose-200\/20,
+body.offline-mode .bg-pink-50\/50,
+body.offline-mode .bg-pink-50 {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
 
-    </header>
+/* Teks dan Judul di Mode Offline */
+body.offline-mode h1,
+body.offline-mode h3,
+body.offline-mode .text-rose-950,
+body.offline-mode .text-rose-900,
+body.offline-mode .text-rose-800 {
+  color: #f8fafc !important;
+}
 
-    <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+body.offline-mode .text-rose-700,
+body.offline-mode .text-rose-600,
+body.offline-mode .text-rose-500,
+body.offline-mode .text-rose-400 {
+  color: #94a3b8 !important;
+}
 
-      <!-- Sidebar Navigasi Kiri -->
-      <aside class="w-full md:w-36 bg-rose-100/60 border-b md:border-b-0 md:border-r border-rose-200 p-2 flex md:flex-col flex-row space-x-2 md:space-x-0 md:space-y-2 shrink-0 transition-colors duration-300">
-        <button onclick="switchTab('watermark')" id="tab-watermark" class="tab-btn active-tab flex-1 md:w-full h-16 md:h-20 rounded-xl flex flex-col items-center justify-center text-center p-1 border transition-all duration-300 hover:scale-[1.02] active:scale-95 group">
-          <span class="text-xl md:text-2xl mb-0.5 transform group-hover:scale-110 transition-transform">🎨</span>
-          <span class="text-[11px] font-bold leading-tight text-rose-900">Merge & Set BG</span>
-        </button>
+body.offline-mode input,
+body.offline-mode select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
 
-        <button onclick="switchTab('esign')" id="tab-esign" class="tab-btn flex-1 md:w-full h-16 md:h-20 rounded-xl flex flex-col items-center justify-center text-center p-1 border border-transparent transition-all duration-300 hover:scale-[1.02] active:scale-95 group">
-          <span class="text-xl md:text-2xl mb-0.5 transform group-hover:scale-110 transition-transform">✍️</span>
-          <span class="text-[11px] font-bold leading-tight text-rose-900">Digital E-Sign</span>
-        </button>
-      </aside>
+/* Border Overrides untuk Slate Gray */
+body.offline-mode .border-rose-200,
+body.offline-mode .border-rose-200\/80,
+body.offline-mode .border-rose-200\/70,
+body.offline-mode .border-rose-200\/60,
+body.offline-mode .border-rose-300,
+body.offline-mode .border-pink-300 {
+  border-color: #334155 !important;
+}
 
-      <!-- Panel Utama Preview -->
-      <main class="flex-1 bg-rose-50/50 p-2 overflow-hidden relative flex flex-col justify-between items-center space-y-2 transition-colors duration-300 min-h-[400px] md:min-h-0">
-        
-        <!-- Control Bar Navigasi & Zoom -->
-        <div class="w-full bg-rose-100 border border-rose-200 rounded-xl p-1.5 px-3 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm z-10 shrink-0 transition-colors duration-300">
-          
-          <div class="flex items-center space-x-1.5">
-            <span class="text-xs font-bold text-rose-900 mr-1">Halaman:</span>
-            <button id="btnPrevPage" onclick="changePageNav(-1)" disabled class="px-2 py-0.5 bg-rose-50 hover:bg-rose-200 disabled:opacity-40 disabled:cursor-not-allowed text-rose-800 rounded-md text-xs font-bold transition active:scale-90">◄</button>
-            
-            <input type="number" id="pageJumpInput" min="1" value="1" disabled onchange="jumpToPage(this.value)" class="w-10 py-0.5 text-center text-xs font-bold bg-white border border-rose-300 disabled:bg-rose-50/50 disabled:text-rose-300 rounded-md focus:outline-rose-500 text-rose-900">
-            
-            <span id="totalPagesLabel" class="text-xs font-semibold text-rose-400">/ 0</span>
-            <button id="btnNextPage" onclick="changePageNav(1)" disabled class="px-2 py-0.5 bg-rose-50 hover:bg-rose-200 disabled:opacity-40 disabled:cursor-not-allowed text-rose-800 rounded-md text-xs font-bold transition active:scale-90">►</button>
-          </div>
+/* Teks Status Offline Mode Menyala (Glowing Effect) */
+body.offline-mode #statusToggleText {
+  color: #38bdf8 !important; /* Sky Blue Light */
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 16px rgba(56, 189, 248, 0.4);
+  font-weight: 800 !important;
+}
 
-          <div class="flex items-center space-x-2">
-            <button id="btnZoomOut" onclick="adjustZoom(-0.1)" disabled class="px-2 py-0.5 bg-rose-50 hover:bg-rose-200 disabled:opacity-40 disabled:cursor-not-allowed text-rose-800 rounded-md text-xs font-bold transition active:scale-90" title="Zoom Out">➖</button>
-            <span id="zoomLabel" class="text-xs font-bold text-rose-300 w-12 text-center select-none">100%</span>
-            <button id="btnZoomIn" onclick="adjustZoom(0.1)" disabled class="px-2 py-0.5 bg-rose-50 hover:bg-rose-200 disabled:opacity-40 disabled:cursor-not-allowed text-rose-800 rounded-md text-xs font-bold transition active:scale-90" title="Zoom In">➕</button>
-          </div>
-        </div>
+/* Tab Aktif pada Mode Offline (Menyala Soft Cyan/Blue) */
+body.offline-mode .tab-btn.active-tab {
+  background-color: rgba(56, 189, 248, 0.15) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
 
-        <!-- Viewport PDF -->
-        <div class="w-full flex-1 overflow-y-auto overflow-x-auto rounded-xl bg-rose-100/60 border border-rose-200 p-2 flex flex-col items-center relative shadow-inner scroll-smooth transition-colors duration-300" id="previewViewport">
-          
-          <div id="zoomContainer" class="w-full flex flex-col items-center justify-start py-4 min-h-full">
-            <div id="previewPlaceholder" class="m-auto text-xs text-rose-400 text-center animate-pulse py-12">
-              Upload PDF & Gambar Background di panel kanan untuk melihat preview langsung
-            </div>
-          </div>
+body.offline-mode .tab-btn.active-tab span {
+  color: #38bdf8 !important;
+}
 
-        </div>
+/* --------------------------------------------------
+   3. Penyeragaman Tombol & Atribut (Online & Offline)
+   -------------------------------------------------- */
+/* Mengubah tombol utama, tombol "+ Add PDF", dan "+ Add Gambar" agar konsisten memakai skema warna tema */
+body:not(.offline-mode) .bg-rose-500,
+body:not(.offline-mode) .bg-pink-500,
+body:not(.offline-mode) .bg-gradient-to-r {
+  background: linear-gradient(to right, #f43f5e, #ec4899) !important;
+  color: #ffffff !important;
+}
 
-      </main>
+body:not(.offline-mode) .bg-rose-500:hover,
+body:not(.offline-mode) .bg-pink-500:hover {
+  background: linear-gradient(to right, #e11d48, #db2777) !important;
+}
 
-      <!-- Sidebar Kontrol Kanan -->
-      <aside class="w-full md:w-80 bg-rose-100/80 border-t md:border-t-0 md:border-l border-rose-200 p-3 flex flex-col justify-between overflow-y-auto space-y-3 shrink-0 transition-colors duration-300">
-        
-        <div id="controls-watermark" class="space-y-3">
-          <h3 class="text-xs font-bold text-rose-950 tracking-wide border-b border-rose-200 pb-1.5">Input Documents</h3>
+/* Konsistensi Tombol saat Mode Offline (Glow Slate-Cyan) */
+body.offline-mode .bg-rose-500,
+body.offline-mode .bg-pink-500,
+body.offline-mode .bg-gradient-to-r {
+  background: linear-gradient(to right, #0284c7, #2563eb) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3) !important;
+}
 
-          <div class="border-2 border-dashed border-rose-300 bg-rose-50 hover:bg-rose-200/50 rounded-xl p-2.5 text-center flex flex-col items-center justify-center space-y-1 transition-all duration-200 hover:scale-[1.01] cursor-pointer group" onclick="document.getElementById('mergeFiles').click()">
-            <span class="text-xl transform group-hover:scale-110 transition-transform">📚</span>
-            <p class="text-xs font-bold text-rose-900">Pilih File PDF</p>
-            <p class="text-[9px] text-rose-400">Bisa banyak PDF (Auto Merge)</p>
-            <input type="file" id="mergeFiles" multiple accept=".pdf" class="hidden" onchange="handleMergeFiles(this.files)">
-            <button class="mt-0.5 px-3 py-0.5 bg-rose-500 group-hover:bg-rose-600 text-white rounded-full text-[10px] font-bold shadow transition active:scale-95">
-              + Add PDF
-            </button>
-          </div>
+body.offline-mode .bg-rose-500:hover,
+body.offline-mode .bg-pink-500:hover {
+  background: linear-gradient(to right, #0369a1, #1d4ed8) !important;
+}
 
-          <div class="border-2 border-dashed border-pink-300 bg-pink-50 hover:bg-pink-100/60 rounded-2xl p-2.5 text-center flex flex-col items-center justify-center space-y-1 transition-all duration-200 hover:scale-[1.01] cursor-pointer group" onclick="document.getElementById('bgFile').click()">
-            <span class="text-xl transform group-hover:scale-110 transition-transform">🖼️</span>
-            <p class="text-xs font-bold text-rose-900">Gambar Background</p>
-            <p class="text-[9px] text-rose-400">PNG / JPG </p>
-            <input type="file" id="bgFile" accept=".png,.jpg,.jpeg" class="hidden" onchange="if(this.files && this.files[0]) handleBgFile(this.files[0])">
-            <button class="mt-0.5 px-3 py-0.5 bg-pink-500 group-hover:bg-pink-600 text-white rounded-full text-[10px] font-bold shadow transition active:scale-95">
-              + Add Gambar
-            </button>
-          </div>
+/* Tombol Navigasi Kecil (Halaman & Zoom) */
+body.offline-mode button.bg-rose-50 {
+  background-color: #334155 !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #475569 !important;
+}
 
-          <div id="bgStatusWrapper" class="hidden p-1.5 bg-rose-50 border border-rose-200 rounded-lg flex items-center justify-between text-xs text-rose-800">
-            <span id="bgFileDisplay" class="font-semibold truncate"></span>
-            <button onclick="removeBgFile()" class="text-rose-600 hover:text-red-500 font-bold px-1 transition active:scale-90">✕</button>
-          </div>
+body.offline-mode button.bg-rose-50:hover {
+  background-color: #475569 !important;
+}
 
-          <div class="space-y-1">
-            <label class="text-[10px] font-bold text-rose-400 uppercase tracking-wider">Urutan File PDF:</label>
-            <div id="rightSidebarOrder" class="space-y-1 text-xs text-rose-700 max-h-32 overflow-y-auto pr-1">
-              <p class="text-rose-400 italic text-[10px]">Belum ada file dipilih</p>
-            </div>
-          </div>
-        </div>
+/* --------------------------------------------------
+   4. Custom Interactive E-Sign Box & Control Handles
+   -------------------------------------------------- */
+.esign-box {
+  border: 1.5px dashed #f43f5e;
+  border-radius: 4px;
+  user-select: none;
+  touch-action: none;
+}
 
-        <div id="controls-esign" class="space-y-3 hidden">
-          <h3 class="text-xs font-bold text-rose-950 tracking-wide border-b border-rose-200 pb-1.5">E-Sign & Stamp Settings</h3>
+body.offline-mode .esign-box {
+  border-color: #38bdf8 !important;
+}
 
-          <div class="border-2 border-dashed border-rose-300 bg-rose-50 hover:bg-rose-200/50 rounded-xl p-3 text-center flex flex-col items-center justify-center space-y-1.5 transition-all duration-200 cursor-pointer group" onclick="document.getElementById('esignImgInput').click()">
-            <input type="file" id="esignImgInput" multiple accept="image/png, image/jpeg, image/jpg, image/webp" class="hidden" onchange="handleEsignUpload(this)">
-            <button class="px-3 py-1.5 bg-rose-500 group-hover:bg-rose-600 text-white text-xs font-bold rounded-lg shadow-md transition active:scale-95 flex items-center gap-1">
-              <span>+</span> Upload E-Sign
-            </button>
-            <p class="text-[9px] text-rose-400">PNG, JPG, WEBP (Bisa Pilih Banyak File Sekaligus)</p>
-          </div>
+.esign-box img {
+  mix-blend-mode: multiply;
+}
 
-          <div class="space-y-1.5">
-            <label class="text-[10px] font-bold text-rose-400 uppercase tracking-wider">Daftar E-Sign / Stempel:</label>
-            <div id="esignAssetsList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
-              <p class="text-rose-400 italic text-[10px]">Belum ada E-Sign/stempel diunggah</p>
-            </div>
-          </div>
-        </div>
+.esign-box.selected {
+  border: 2px solid #e11d48 !important;
+  box-shadow: 0 0 8px rgba(225, 29, 72, 0.4);
+}
 
-        <div class="space-y-2 pt-2 border-t border-rose-200">
-          <div class="space-y-1">
-            <label class="text-[10px] font-bold text-rose-400 uppercase tracking-wider">Nama File Output</label>
-            <input type="text" id="outputFileName" value="Wowo_PDF_Document.pdf" class="w-full px-2.5 py-1.5 text-xs bg-white border border-rose-200 rounded-lg focus:outline-rose-500 text-rose-900 font-medium transition">
-          </div>
+body.offline-mode .esign-box.selected {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6) !important;
+}
 
-          <button onclick="activeTab === 'esign' ? processEsignDownload() : processMergeAndBg()" class="w-full py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-xs tracking-wider rounded-lg shadow-md shadow-rose-500/20 active:scale-95 transition-all flex items-center justify-center gap-1.5">
-            <span>💾</span> Save & Download
-          </button>
-        </div>
+.esign-handle-rotate {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #f43f5e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 60;
+}
 
-      </aside>
+.esign-handle-resize {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border: 1px solid #f43f5e;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: nwse-resize;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 60;
+}
 
-    </div>
-  </div>
+.esign-delete-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 60;
+}
 
-  <script src="js/ui.js"></script>
-  <script src="js/db-helper.js"></script>
-  <script src="js/modules/pdf-merger.js"></script>
-  <script src="js/modules/pdf-watermark.js"></script>
-  <script src="js/modules/pdf-esign.js"></script>
-  <script src="js/app.js"></script>
+.esign-handle-rotate:hover {
+  transform: scale(1.15) translateX(-50%);
+}
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then((reg) => console.log('Service Worker Registered successfully:', reg.scope))
-          .catch((err) => console.error('Service Worker Registration failed:', err));
-      });
-    }
-  </script>
-</body>
-</html>
+.esign-handle-resize:hover,
+.esign-delete-btn:hover {
+  transform: scale(1.15);
+}
+
+/* --------------------------------------------------
+   5. Mobile Responsive Enhancements
+   -------------------------------------------------- */
+@media (max-width: 768px) {
+  #previewViewport {
+    padding: 8px !important;
+    overflow-x: auto !important;
+  }
+
+  .pdf-page-wrapper {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .pdf-page-wrapper canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .esign-handle-rotate,
+  .esign-handle-resize,
+  .esign-delete-btn {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 12px !important;
+  }
+}
