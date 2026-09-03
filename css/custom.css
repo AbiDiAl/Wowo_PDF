@@ -197,8 +197,39 @@ body.offline-mode .tab-btn.active-tab span {
   z-index: 60;
 }
 
-.esign-handle-rotate:hover,
+.esign-handle-rotate:hover {
+  transform: scale(1.15) translateX(-50%);
+}
+
 .esign-handle-resize:hover,
 .esign-delete-btn:hover {
-  transform: scale(1.15) translateX(0);
+  transform: scale(1.15);
+}
+
+/* --------------------------------------------------
+   3. Mobile Responsive Enhancements
+   -------------------------------------------------- */
+@media (max-width: 768px) {
+  #previewViewport {
+    padding: 8px !important;
+    overflow-x: auto !important;
+  }
+
+  .pdf-page-wrapper {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .pdf-page-wrapper canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .esign-handle-rotate,
+  .esign-handle-resize,
+  .esign-delete-btn {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 12px !important;
+  }
 }
