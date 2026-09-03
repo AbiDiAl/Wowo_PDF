@@ -9,7 +9,7 @@
   height: 100vh;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.25; /* Transparansi tipis agar mata tetap nyaman */
+  opacity: 0.75; /* Transparansi tipis agar mata tetap nyaman */
   pointer-events: none;
   filter: saturate(1.2) contrast(1.05);
 }
