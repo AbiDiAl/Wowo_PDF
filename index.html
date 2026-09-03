@@ -21,9 +21,15 @@
     }
   </style>
 </head>
-<body class="bg-rose-100 text-slate-800 min-h-screen flex items-center justify-center p-1.5 md:p-3 font-sans antialiased transition-colors duration-300">
+<body class="bg-rose-100 text-slate-800 min-h-screen flex items-center justify-center p-1.5 md:p-3 font-sans antialiased transition-colors duration-300 relative overflow-x-hidden">
 
-  <div id="appContainer" class="w-full max-w-[98vw] bg-rose-50 rounded-2xl shadow-2xl border border-rose-200 overflow-hidden flex flex-col h-auto md:h-[96vh] min-h-screen md:min-h-0 transition-colors duration-300">
+  <!-- Background Video Element & Soft Overlay -->
+  <video autoplay loop muted playsinline id="bgRainVideo" class="bg-rain-video">
+    <source src="assets/videos/rain.mp4" type="video/mp4">
+  </video>
+  <div class="bg-rain-overlay"></div>
+
+  <div id="appContainer" class="w-full max-w-[98vw] bg-rose-50 rounded-2xl shadow-2xl border border-rose-200 overflow-hidden flex flex-col h-auto md:h-[96vh] min-h-screen md:min-h-0 transition-colors duration-300 relative z-10">
 
     <header class="bg-rose-100/80 border-b border-rose-200 px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 shrink-0 relative backdrop-blur-sm transition-colors duration-300">
       
