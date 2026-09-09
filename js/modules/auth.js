@@ -63,7 +63,7 @@ function logoutUser() {
 }
 
 /**
- * Menampilkan / Mengatur Tampilan Layar Authentication (Modal Barrier)
+ * Menampilkan / Mengatur Tampilan Layar Authentication dengan Transisi Halus
  */
 function checkAuthAndRenderUI() {
   const authModal = document.getElementById('authModal');
@@ -71,12 +71,34 @@ function checkAuthAndRenderUI() {
   const isAuth = isAuthenticated();
 
   if (isAuth) {
-    if (authModal) authModal.classList.add('hidden');
-    if (appContainer) {
-      appContainer.classList.remove('pointer-events-none', 'blur-sm');
+    document.documentElement.classList.add('is-authenticated');
+
+    if (authModal && !authModal.classList.contains('hidden')) {
+      // Hilangkan blur awal sebelum transisi berjalan
+      if (appContainer) {
+        appContainer.classList.remove('pointer-events-none', 'blur-sm');
+        appContainer.classList.add('app-unlock-enter');
+        setTimeout(() => {
+          appContainer.classList.remove('app-unlock-enter');
+        }, 600);
+      }
+
+      // Animasi exit pada modal
+      authModal.classList.add('auth-modal-exit');
+      setTimeout(() => {
+        authModal.classList.add('hidden');
+        authModal.classList.remove('auth-modal-exit');
+      }, 400);
+    } else {
+      if (appContainer) {
+        appContainer.classList.remove('pointer-events-none', 'blur-sm');
+      }
     }
   } else {
-    if (authModal) authModal.classList.remove('hidden');
+    document.documentElement.classList.remove('is-authenticated');
+    if (authModal) {
+      authModal.classList.remove('hidden', 'auth-modal-exit');
+    }
     if (appContainer) {
       appContainer.classList.add('pointer-events-none', 'blur-sm');
     }

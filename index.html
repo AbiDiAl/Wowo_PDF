@@ -41,43 +41,45 @@
 
   <!-- MODAL AUTHENTICATION LOCK SCREEN (Default Hidden untuk Cegah Flicker) -->
   <div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-rose-950/40 backdrop-blur-md p-4 transition-all duration-300">
-    <div class="w-full max-w-sm bg-white/90 border border-rose-200 rounded-2xl shadow-2xl p-6 flex flex-col items-center text-center space-y-4 backdrop-blur-xl relative overflow-hidden auth-modal-card">
-      
-      <!-- Ambient Glow -->
-      <div class="absolute -top-12 -left-12 w-28 h-28 bg-rose-400/30 rounded-full blur-2xl pointer-events-none"></div>
-      <div class="absolute -bottom-12 -right-12 w-28 h-28 bg-pink-500/30 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="ambient-glow-wrapper rounded-3xl shadow-2xl w-full max-w-sm">
+      <div class="w-full bg-white/90 border border-rose-200/50 rounded-[22px] p-6 flex flex-col items-center text-center space-y-4 backdrop-blur-xl relative z-10 auth-modal-card">
+        
+        <!-- Ambient Glow Internal -->
+        <div class="absolute -top-12 -left-12 w-28 h-28 bg-rose-400/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-12 -right-12 w-28 h-28 bg-pink-500/30 rounded-full blur-2xl pointer-events-none"></div>
 
-      <!-- Icon & Title Header -->
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 p-1 flex items-center justify-center shadow-lg shadow-rose-500/30 shrink-0">
-        <img src="assets/icons/madness.gif" alt="Wowo_PDF Icon" class="w-full h-full object-contain rounded-xl">
-      </div>
-
-      <div>
-        <h2 class="text-xl font-extrabold text-rose-950 tracking-tight">Wowo_PDF</h2>
-        <p class="text-xs text-rose-500 font-medium mt-1">Masukkan password akses untuk melanjutkan</p>
-      </div>
-
-      <!-- Form Login -->
-      <form id="authLoginForm" onsubmit="handleAuthSubmit(event)" class="w-full space-y-3 pt-2">
-        <div class="relative w-full">
-          <input type="password" id="authPasswordInput" placeholder="Password Akses..." required
-            class="w-full px-4 py-2.5 text-xs bg-rose-50/50 border border-rose-200 rounded-xl focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-400/20 text-rose-950 font-bold tracking-wider placeholder-rose-300 transition pr-10">
-          <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-1/2 -translate-y-1/2 text-rose-400 hover:text-rose-600 text-xs focus:outline-none">
-            <span id="passToggleIcon">👁️</span>
-          </button>
+        <!-- Icon & Title Header -->
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 p-1 flex items-center justify-center shadow-lg shadow-rose-500/30 shrink-0">
+          <img src="assets/icons/madness.gif" alt="Wowo_PDF Icon" class="w-full h-full object-contain rounded-xl">
         </div>
 
-        <div id="authErrorMessage" class="hidden text-[11px] font-bold text-rose-600 bg-rose-100/80 border border-rose-200 rounded-lg p-2 animate-shake"></div>
+        <div>
+          <h2 class="text-xl font-extrabold text-rose-950 tracking-tight">Wowo_PDF</h2>
+          <p class="text-xs text-rose-500 font-medium mt-1">Masukkan password akses untuk melanjutkan</p>
+        </div>
 
-        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-xs tracking-wider rounded-xl shadow-md shadow-rose-500/30 active:scale-95 transition-all">
-          Buka Aplikasi 🔓
-        </button>
-      </form>
+        <!-- Form Login -->
+        <form id="authLoginForm" onsubmit="handleAuthSubmit(event)" class="w-full space-y-3 pt-2">
+          <div class="relative w-full">
+            <input type="password" id="authPasswordInput" placeholder="Password Akses..." required
+              class="w-full px-4 py-2.5 text-xs bg-rose-50/50 border border-rose-200 rounded-xl focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-400/20 text-rose-950 font-bold tracking-wider placeholder-rose-300 transition pr-10">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-1/2 -translate-y-1/2 text-rose-400 hover:text-rose-600 text-xs focus:outline-none">
+              <span id="passToggleIcon">👁️</span>
+            </button>
+          </div>
 
-      <p class="text-[10px] text-rose-400 font-semibold pt-2 border-t border-rose-100 w-full">
-        © 08/2026
-      </p>
+          <div id="authErrorMessage" class="hidden text-[11px] font-bold text-rose-600 bg-rose-100/80 border border-rose-200 rounded-lg p-2 animate-shake"></div>
 
+          <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-xs tracking-wider rounded-xl shadow-md shadow-rose-500/30 active:scale-95 transition-all">
+            Buka Aplikasi 🔓
+          </button>
+        </form>
+
+        <p class="text-[10px] text-rose-400 font-semibold pt-2 border-t border-rose-100 w-full">
+          © 08/2026
+        </p>
+
+      </div>
     </div>
   </div>
 
@@ -289,6 +291,12 @@
     }
 
     function handleAuthLogout() {
+      const modal = document.getElementById('authModal');
+      const appContainer = document.getElementById('appContainer');
+
+      if (modal) modal.classList.remove('auth-modal-exit');
+      if (appContainer) appContainer.classList.remove('app-unlock-enter');
+
       document.documentElement.classList.remove('is-authenticated');
       window.AuthModule.logout();
       window.AuthModule.check();
