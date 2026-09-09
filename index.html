@@ -19,7 +19,17 @@
     .no-init-transition {
       transition: none !important;
     }
+    /* Mencegah modal berkedip jika pengguna sudah terautentikasi */
+    html.is-authenticated #authModal {
+      display: none !important;
+    }
+    html.is-authenticated #appContainer {
+      filter: none !important;
+      pointer-events: auto !important;
+    }
   </style>
+  <!-- Load Auth Module awal untuk eksekusi pencegahan flicker -->
+  <script src="js/modules/auth.js"></script>
 </head>
 <body class="bg-rose-100 text-slate-800 min-h-screen flex items-center justify-center p-1.5 md:p-3 font-sans antialiased transition-colors duration-300 relative overflow-x-hidden">
 
@@ -29,8 +39,8 @@
   </video>
   <div class="bg-rain-overlay"></div>
 
-  <!-- MODAL AUTHENTICATION LOCK SCREEN -->
-  <div id="authModal" class="fixed inset-0 z-50 flex items-center justify-center bg-rose-950/40 backdrop-blur-md p-4 transition-all duration-300">
+  <!-- MODAL AUTHENTICATION LOCK SCREEN (Default Hidden untuk Cegah Flicker) -->
+  <div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-rose-950/40 backdrop-blur-md p-4 transition-all duration-300">
     <div class="w-full max-w-sm bg-white/90 border border-rose-200 rounded-2xl shadow-2xl p-6 flex flex-col items-center text-center space-y-4 backdrop-blur-xl relative overflow-hidden auth-modal-card">
       
       <!-- Ambient Glow -->
@@ -43,7 +53,7 @@
       </div>
 
       <div>
-        <h2 class="text-xl font-extrabold text-rose-950 tracking-tight">Wowo_PDF Security</h2>
+        <h2 class="text-xl font-extrabold text-rose-950 tracking-tight">Wowo_PDF</h2>
         <p class="text-xs text-rose-500 font-medium mt-1">Masukkan password akses untuk melanjutkan</p>
       </div>
 
@@ -65,13 +75,13 @@
       </form>
 
       <p class="text-[10px] text-rose-400 font-semibold pt-2 border-t border-rose-100 w-full">
-        Sesi login otomatis tersimpan selama 7 hari (Reset 00:00).
+        © 08/2026
       </p>
 
     </div>
   </div>
 
-  <div id="appContainer" class="w-full max-w-[98vw] bg-rose-50 rounded-2xl shadow-2xl border border-rose-200 overflow-hidden flex flex-col h-auto md:h-[96vh] min-h-screen md:min-h-0 transition-colors duration-300 relative z-10 pointer-events-none blur-sm">
+  <div id="appContainer" class="w-full max-w-[98vw] bg-rose-50 rounded-2xl shadow-2xl border border-rose-200 overflow-hidden flex flex-col h-auto md:h-[96vh] min-h-screen md:min-h-0 transition-colors duration-300 relative z-10">
 
     <header class="bg-rose-100/80 border-b border-rose-200 px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 shrink-0 relative backdrop-blur-sm transition-colors duration-300">
       
@@ -238,7 +248,6 @@
 
   <script src="js/ui.js"></script>
   <script src="js/db-helper.js"></script>
-  <script src="js/modules/auth.js"></script>
   <script src="js/modules/pdf-merger.js"></script>
   <script src="js/modules/pdf-watermark.js"></script>
   <script src="js/modules/pdf-esign.js"></script>
@@ -280,6 +289,7 @@
     }
 
     function handleAuthLogout() {
+      document.documentElement.classList.remove('is-authenticated');
       window.AuthModule.logout();
       window.AuthModule.check();
     }
