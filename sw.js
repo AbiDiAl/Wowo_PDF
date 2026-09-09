@@ -1,13 +1,15 @@
 // sw.js - Cache offline untuk Wowo_PDF
-const CACHE_NAME = 'wowo-pdf-v1';
+const CACHE_NAME = 'wowo-pdf-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
   './css/custom.css',
   './assets/icons/madness.gif',
+  './assets/videos/rain.mp4',
   './js/ui.js',
   './js/db-helper.js',
+  './js/modules/auth.js',
   './js/modules/pdf-merger.js',
   './js/modules/pdf-watermark.js',
   './js/modules/pdf-esign.js',
