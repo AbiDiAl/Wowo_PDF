@@ -20,7 +20,6 @@ const ASSETS_TO_CACHE = [
   'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'
 ];
 
-// Install Service Worker & Simpan Aset ke Cache
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -30,7 +29,6 @@ self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
-// Hapus cache lama jika ada update
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {
@@ -46,12 +44,11 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
-// Fetch Strategy: Cache-First dengan Fallback ke Network
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
       return cachedResponse || fetch(e.request).catch(() => {
-        // Abaikan jika request gagal saat offline
+        // Fallback jika offline
       });
     })
   );
