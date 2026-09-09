@@ -1,4 +1,4 @@
-// js/app.js - Rose Pink (Online) & Slate Gray (Offline) Theme Controller
+// js/app.js - Rose Pink (Online) & Slate Gray (Offline) Theme Controller & Gatekeeper
 
 if (typeof pdfjsLib !== 'undefined') {
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -12,6 +12,9 @@ let isRendering = false;
 let currentRenderTask = null;
 
 window.addEventListener('DOMContentLoaded', () => {
+  if (window.AuthModule && typeof window.AuthModule.check === 'function') {
+    window.AuthModule.check();
+  }
   updateNetworkStatusUI();
   setupScrollListener();
 });
