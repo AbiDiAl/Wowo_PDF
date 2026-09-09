@@ -1,0 +1,316 @@
+/* --------------------------------------------------
+   0. Fullscreen Rain Video Background & Overlay
+   -------------------------------------------------- */
+.bg-rain-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.75;
+  pointer-events: none;
+  filter: saturate(1.2) contrast(1.05);
+}
+
+.bg-rain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(244, 63, 94, 0.05) 100%);
+}
+
+body.offline-mode .bg-rain-overlay {
+  background: radial-gradient(circle, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.6) 100%) !important;
+}
+
+body.offline-mode .bg-rain-video {
+  opacity: 0.35 !important;
+}
+
+/* --------------------------------------------------
+   1. Active Tab Styling & Auth Animations
+   -------------------------------------------------- */
+.tab-btn {
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-btn.active-tab {
+  background-color: rgba(244, 63, 94, 0.15) !important;
+  border-color: #f43f5e !important;
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+}
+
+.tab-btn.active-tab span {
+  color: #881337 !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* --------------------------------------------------
+   2. Offline Mode (Dark Slate Gray Theme & Glow Effects)
+   -------------------------------------------------- */
+body.offline-mode {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+body.offline-mode #appContainer {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.offline-mode header,
+body.offline-mode aside,
+body.offline-mode main,
+body.offline-mode #previewViewport {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.offline-mode .auth-modal-card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.offline-mode .bg-white\/90,
+body.offline-mode .bg-white\/80,
+body.offline-mode .bg-white\/70,
+body.offline-mode .bg-white,
+body.offline-mode .bg-rose-50\/40,
+body.offline-mode .bg-rose-50\/50,
+body.offline-mode .bg-rose-50\/60,
+body.offline-mode .bg-rose-50\/80,
+body.offline-mode .bg-rose-50,
+body.offline-mode .bg-rose-100\/30,
+body.offline-mode .bg-rose-100\/60,
+body.offline-mode .bg-rose-100\/70,
+body.offline-mode .bg-rose-100\/80,
+body.offline-mode .bg-rose-100,
+body.offline-mode .bg-rose-200\/20,
+body.offline-mode .bg-pink-50\/50,
+body.offline-mode .bg-pink-50 {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+body.offline-mode h1,
+body.offline-mode h2,
+body.offline-mode h3,
+body.offline-mode .text-rose-950,
+body.offline-mode .text-rose-900,
+body.offline-mode .text-rose-800 {
+  color: #f8fafc !important;
+}
+
+body.offline-mode .text-rose-700,
+body.offline-mode .text-rose-600,
+body.offline-mode .text-rose-500,
+body.offline-mode .text-rose-400 {
+  color: #94a3b8 !important;
+}
+
+body.offline-mode input,
+body.offline-mode select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+body.offline-mode .border-rose-200,
+body.offline-mode .border-rose-200\/80,
+body.offline-mode .border-rose-200\/70,
+body.offline-mode .border-rose-200\/60,
+body.offline-mode .border-rose-300,
+body.offline-mode .border-pink-300 {
+  border-color: #334155 !important;
+}
+
+body.offline-mode #statusToggleText {
+  color: #38bdf8 !important;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 16px rgba(56, 189, 248, 0.4);
+  font-weight: 800 !important;
+}
+
+body.offline-mode .tab-btn.active-tab {
+  background-color: rgba(56, 189, 248, 0.15) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+body.offline-mode .tab-btn.active-tab span {
+  color: #38bdf8 !important;
+}
+
+/* --------------------------------------------------
+   3. Penyeragaman Tombol (Online & Offline)
+   -------------------------------------------------- */
+body:not(.offline-mode) .bg-rose-500,
+body:not(.offline-mode) .bg-pink-500,
+body:not(.offline-mode) .bg-gradient-to-r {
+  background: linear-gradient(to right, #f43f5e, #ec4899) !important;
+  color: #ffffff !important;
+}
+
+body:not(.offline-mode) .bg-rose-500:hover,
+body:not(.offline-mode) .bg-pink-500:hover {
+  background: linear-gradient(to right, #e11d48, #db2777) !important;
+}
+
+body.offline-mode .bg-rose-500,
+body.offline-mode .bg-pink-500,
+body.offline-mode .bg-gradient-to-r {
+  background: linear-gradient(to right, #0284c7, #2563eb) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3) !important;
+}
+
+body.offline-mode .bg-rose-500:hover,
+body.offline-mode .bg-pink-500:hover {
+  background: linear-gradient(to right, #0369a1, #1d4ed8) !important;
+}
+
+body.offline-mode button.bg-rose-50 {
+  background-color: #334155 !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #475569 !important;
+}
+
+body.offline-mode button.bg-rose-50:hover {
+  background-color: #475569 !important;
+}
+
+/* --------------------------------------------------
+   4. Custom Interactive E-Sign Box & Control Handles
+   -------------------------------------------------- */
+.esign-box {
+  border: 1.5px dashed #f43f5e;
+  border-radius: 4px;
+  user-select: none;
+  touch-action: none;
+}
+
+body.offline-mode .esign-box {
+  border-color: #38bdf8 !important;
+}
+
+.esign-box img {
+  mix-blend-mode: multiply;
+}
+
+.esign-box.selected {
+  border: 2px solid #e11d48 !important;
+  box-shadow: 0 0 8px rgba(225, 29, 72, 0.4);
+}
+
+body.offline-mode .esign-box.selected {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6) !important;
+}
+
+.esign-handle-rotate {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #f43f5e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 60;
+}
+
+.esign-handle-resize {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border: 1px solid #f43f5e;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: nwse-resize;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  z-index: 60;
+}
+
+.esign-delete-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 60;
+}
+
+.esign-handle-rotate:hover {
+  transform: scale(1.15) translateX(-50%);
+}
+
+.esign-handle-resize:hover,
+.esign-delete-btn:hover {
+  transform: scale(1.15);
+}
+
+/* --------------------------------------------------
+   5. Mobile Responsive Enhancements
+   -------------------------------------------------- */
+@media (max-width: 768px) {
+  #previewViewport {
+    padding: 8px !important;
+    overflow-x: auto !important;
+  }
+
+  .pdf-page-wrapper {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .pdf-page-wrapper canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .esign-handle-rotate,
+  .esign-handle-resize,
+  .esign-delete-btn {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 12px !important;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Wowo_PDF",
+  "short_name": "Wowo_PDF",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "assets/icons/madness.gif",
+      "sizes": "192x192",
+      "type": "image/gif"
+    },
+    {
+      "src": "assets/icons/madness.gif",
+      "sizes": "512x512",
+      "type": "image/gif"
+    }
+  ]
+}
