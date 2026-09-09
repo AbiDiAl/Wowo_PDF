@@ -42,7 +42,6 @@ function updateNetworkStatusUI() {
   if (!track || !circle || !text) return;
 
   if (navigator.onLine) {
-    // Mode ONLINE: Dominan Rose Pink
     track.className = 'w-9 h-5 bg-rose-500 rounded-full p-0.5 flex items-center cursor-default';
     circle.className = 'w-3.5 h-3.5 bg-white rounded-full shadow-md transform translate-x-4';
     text.innerText = 'Online Mode';
@@ -51,7 +50,6 @@ function updateNetworkStatusUI() {
     if (appContainer) appContainer.classList.remove('offline-theme');
     document.body.classList.remove('offline-mode');
   } else {
-    // Mode OFFLINE: Dominan Abu-Abu (Slate Gray)
     track.className = 'w-9 h-5 bg-slate-400 rounded-full p-0.5 flex items-center cursor-default';
     circle.className = 'w-3.5 h-3.5 bg-white rounded-full shadow-md transform translate-x-0';
     text.innerText = 'Offline Mode';
@@ -61,7 +59,6 @@ function updateNetworkStatusUI() {
     document.body.classList.add('offline-mode');
   }
 
-  // Smooth Animation
   setTimeout(() => {
     track.classList.add('transition-colors', 'duration-300', 'ease-in-out');
     circle.classList.add('transition-transform', 'duration-300', 'ease-in-out');
@@ -70,9 +67,6 @@ function updateNetworkStatusUI() {
   }, 100);
 }
 
-/**
- * Render PDF dengan Zoom & Penataan Wrapper Presisi
- */
 window.applyZoomScale = async function(zoomLevel) {
   const zoom = zoomLevel || window.currentZoom || 1.0;
   window.currentZoom = zoom;
