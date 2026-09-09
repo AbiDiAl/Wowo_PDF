@@ -47,7 +47,10 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
-      return cachedResponse || fetch(e.request).catch(() => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(e.request).catch(() => {
         // Fallback jika offline
       });
     })
