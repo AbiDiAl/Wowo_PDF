@@ -9,7 +9,7 @@
   height: 100vh;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.55; /* Transparansi tipis agar mata tetap nyaman */
+  opacity: 0.75;
   pointer-events: none;
   filter: saturate(1.2) contrast(1.05);
 }
@@ -34,7 +34,7 @@ body.offline-mode .bg-rain-video {
 }
 
 /* --------------------------------------------------
-   1. Active Tab Styling (Navigasi Kiri)
+   1. Active Tab Styling & Auth Animations
    -------------------------------------------------- */
 .tab-btn {
   border: 2px solid transparent;
@@ -42,7 +42,7 @@ body.offline-mode .bg-rain-video {
 }
 
 .tab-btn.active-tab {
-  background-color: rgba(244, 63, 94, 0.15) !important; /* Soft Rose Highlight */
+  background-color: rgba(244, 63, 94, 0.15) !important;
   border-color: #f43f5e !important;
   box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
 }
@@ -51,18 +51,26 @@ body.offline-mode .bg-rain-video {
   color: #881337 !important;
 }
 
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
 /* --------------------------------------------------
    2. Offline Mode (Dark Slate Gray Theme & Glow Effects)
    -------------------------------------------------- */
-/* Background Utama Aplikasi */
 body.offline-mode {
-  background-color: #0f172a !important; /* Dark Slate 900 */
+  background-color: #0f172a !important;
   color: #f8fafc !important;
 }
 
-/* Container Utama & Panel-panel */
 body.offline-mode #appContainer {
-  background-color: #1e293b !important; /* Slate 800 */
+  background-color: #1e293b !important;
   border-color: #334155 !important;
 }
 
@@ -74,7 +82,11 @@ body.offline-mode #previewViewport {
   border-color: #334155 !important;
 }
 
-/* Element Kartu & Kontainer Dalam */
+body.offline-mode .auth-modal-card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
 body.offline-mode .bg-white\/90,
 body.offline-mode .bg-white\/80,
 body.offline-mode .bg-white\/70,
@@ -96,8 +108,8 @@ body.offline-mode .bg-pink-50 {
   border-color: #334155 !important;
 }
 
-/* Teks dan Judul di Mode Offline */
 body.offline-mode h1,
+body.offline-mode h2,
 body.offline-mode h3,
 body.offline-mode .text-rose-950,
 body.offline-mode .text-rose-900,
@@ -119,7 +131,6 @@ body.offline-mode select {
   border-color: #475569 !important;
 }
 
-/* Border Overrides untuk Slate Gray */
 body.offline-mode .border-rose-200,
 body.offline-mode .border-rose-200\/80,
 body.offline-mode .border-rose-200\/70,
@@ -129,14 +140,12 @@ body.offline-mode .border-pink-300 {
   border-color: #334155 !important;
 }
 
-/* Teks Status Offline Mode Menyala (Glowing Effect) */
 body.offline-mode #statusToggleText {
-  color: #38bdf8 !important; /* Sky Blue Light */
+  color: #38bdf8 !important;
   text-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 16px rgba(56, 189, 248, 0.4);
   font-weight: 800 !important;
 }
 
-/* Tab Aktif pada Mode Offline (Menyala Soft Cyan/Blue) */
 body.offline-mode .tab-btn.active-tab {
   background-color: rgba(56, 189, 248, 0.15) !important;
   border-color: #38bdf8 !important;
@@ -148,9 +157,8 @@ body.offline-mode .tab-btn.active-tab span {
 }
 
 /* --------------------------------------------------
-   3. Penyeragaman Tombol & Atribut (Online & Offline)
+   3. Penyeragaman Tombol (Online & Offline)
    -------------------------------------------------- */
-/* Mengubah tombol utama, tombol "+ Add PDF", dan "+ Add Gambar" agar konsisten memakai skema warna tema */
 body:not(.offline-mode) .bg-rose-500,
 body:not(.offline-mode) .bg-pink-500,
 body:not(.offline-mode) .bg-gradient-to-r {
@@ -163,7 +171,6 @@ body:not(.offline-mode) .bg-pink-500:hover {
   background: linear-gradient(to right, #e11d48, #db2777) !important;
 }
 
-/* Konsistensi Tombol saat Mode Offline (Glow Slate-Cyan) */
 body.offline-mode .bg-rose-500,
 body.offline-mode .bg-pink-500,
 body.offline-mode .bg-gradient-to-r {
@@ -177,7 +184,6 @@ body.offline-mode .bg-pink-500:hover {
   background: linear-gradient(to right, #0369a1, #1d4ed8) !important;
 }
 
-/* Tombol Navigasi Kecil (Halaman & Zoom) */
 body.offline-mode button.bg-rose-50 {
   background-color: #334155 !important;
   color: #f1f5f9 !important;
