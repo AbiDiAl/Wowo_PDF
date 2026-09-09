@@ -5,7 +5,7 @@ let activeTab = 'watermark';
 window.currentPage = 1;
 window.totalPages = 0;
 window.currentZoom = 1.0;
-window.isProgrammaticScroll = false; // Flag penahan listener scroll
+window.isProgrammaticScroll = false;
 
 window.addEventListener('DOMContentLoaded', () => {
   updateCustomTheme();
@@ -23,22 +23,14 @@ function switchTab(tabName) {
     if (watermarkCtrl) watermarkCtrl.classList.remove('hidden');
     if (esignCtrl) esignCtrl.classList.add('hidden');
     
-    if (tabWatermarkBtn) {
-      tabWatermarkBtn.classList.add('active-tab');
-    }
-    if (tabEsignBtn) {
-      tabEsignBtn.classList.remove('active-tab');
-    }
+    if (tabWatermarkBtn) tabWatermarkBtn.classList.add('active-tab');
+    if (tabEsignBtn) tabEsignBtn.classList.remove('active-tab');
   } else if (tabName === 'esign') {
     if (watermarkCtrl) watermarkCtrl.classList.add('hidden');
     if (esignCtrl) esignCtrl.classList.remove('hidden');
     
-    if (tabWatermarkBtn) {
-      tabWatermarkBtn.classList.remove('active-tab');
-    }
-    if (tabEsignBtn) {
-      tabEsignBtn.classList.add('active-tab');
-    }
+    if (tabWatermarkBtn) tabWatermarkBtn.classList.remove('active-tab');
+    if (tabEsignBtn) tabEsignBtn.classList.add('active-tab');
   }
 
   window.dispatchEvent(new CustomEvent('tabChanged', { detail: { tab: tabName } }));
@@ -48,9 +40,6 @@ function switchTab(tabName) {
   }
 }
 
-/**
- * Mengontrol status disabled/enabled tombol navigasi dan zoom
- */
 function toggleControlsState(hasPdf) {
   const btnPrev = document.getElementById('btnPrevPage');
   const btnNext = document.getElementById('btnNextPage');
@@ -159,11 +148,7 @@ function adjustZoom(delta) {
   }, 100);
 }
 
-// ==========================================================================
-// DYNAMIC HEADER NOTIFICATION HELPER
-// ==========================================================================
 let statusBannerTimer = null;
-
 function showHeaderStatus(message, type = 'info', autoHideMs = 3000) {
   const banner = document.getElementById('headerStatusBanner');
   const text = document.getElementById('headerStatusText');
@@ -221,9 +206,6 @@ function hideHeaderStatus() {
   }
 }
 
-// ==========================================================================
-// DYNAMIC RGB CUSTOM THEME HELPER
-// ==========================================================================
 function updateCustomTheme() {
   const rInput = document.getElementById('rgbR');
   const gInput = document.getElementById('rgbG');
