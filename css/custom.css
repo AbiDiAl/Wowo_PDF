@@ -466,8 +466,9 @@ body.offline-mode .esign-box.selected {
 }
 
 .pulse-heart {
-  animation: pulseHeart 1.4s infinite ease-in-out;
-  transform-origin: center center;
+  display: inline-block !important; /* Memastikan browser mengizinkan transformasi skala pada image */
+  animation: pulseHeart 1.4s infinite ease-in-out !important;
+  transform-origin: center center !important;
 }
 
 /* Matikan detakan animasi saat dalam mode Offline */
