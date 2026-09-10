@@ -22,14 +22,14 @@ window.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('online', () => {
   updateNetworkStatusUI();
   if (typeof showHeaderStatus === 'function') {
-    showHeaderStatus('Koneksi terhubung kembali - Mode Online Rose Pink', 'info', 2500);
+    showHeaderStatus('Koneksi terhubung kembali', 'info', 2500);
   }
 });
 
 window.addEventListener('offline', () => {
   updateNetworkStatusUI();
   if (typeof showHeaderStatus === 'function') {
-    showHeaderStatus('Mode Offline Aktif - Tampilan Berubah Abu-abu (Slate)', 'warning', 3000);
+    showHeaderStatus('Mode Offline Aktif', 'warning', 3000);
   }
 });
 
