@@ -440,3 +440,37 @@ body.offline-mode .esign-box.selected {
     filter: blur(0px);
   }
 }
+
+/* --------------------------------------------------
+   7. Animasi Logo Berdetak (Heartbeat Effect khusus elemen Gambar)
+   -------------------------------------------------- */
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.15);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-heart {
+  animation: pulseHeart 1.4s infinite ease-in-out;
+  transform-origin: center center;
+}
+
+/* Matikan detakan animasi saat dalam mode Offline */
+body.offline-mode .pulse-heart {
+  animation: none !important;
+}
