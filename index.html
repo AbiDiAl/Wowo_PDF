@@ -39,7 +39,7 @@
   </video>
   <div class="bg-rain-overlay"></div>
 
-  <!-- MODAL AUTHENTICATION LOCK SCREEN (Default Hidden untuk Cegah Flicker) -->
+  <!-- MODAL AUTHENTICATION LOCK SCREEN -->
   <div id="authModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-rose-950/40 backdrop-blur-md p-4 transition-all duration-300">
     <div class="ambient-glow-wrapper rounded-3xl shadow-2xl w-full max-w-sm">
       <div class="w-full bg-white/90 border border-rose-200/50 rounded-[22px] p-6 flex flex-col items-center text-center space-y-4 backdrop-blur-xl relative z-10 auth-modal-card">
@@ -48,7 +48,7 @@
         <div class="absolute -top-12 -left-12 w-28 h-28 bg-rose-400/30 rounded-full blur-2xl pointer-events-none"></div>
         <div class="absolute -bottom-12 -right-12 w-28 h-28 bg-pink-500/30 rounded-full blur-2xl pointer-events-none"></div>
 
-        <!-- Icon & Title Header (Gambar Telur yang Berdetak di Dalam Kotak) -->
+        <!-- Icon & Title Header -->
         <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 p-1 flex items-center justify-center shadow-lg shadow-rose-500/30 shrink-0">
           <img src="assets/icons/madness.gif" alt="Wowo_PDF Icon" class="w-full h-full object-contain rounded-xl pulse-heart">
         </div>
@@ -87,12 +87,12 @@
 
     <header class="bg-rose-100/80 border-b border-rose-200 px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 shrink-0 relative backdrop-blur-sm transition-colors duration-300">
       
-      <!-- Logo & Judul Kiri -->
-      <div class="flex items-center space-x-3 transition-transform hover:scale-105 cursor-pointer">
+      <!-- Logo & Judul Kiri (Solid) -->
+      <div class="flex items-center space-x-3 transition-transform hover:scale-105 cursor-pointer brand-logo-solid p-1.5 rounded-2xl">
         <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-400 p-1 flex items-center justify-center shadow-md shadow-rose-500/20 overflow-hidden shrink-0">
           <img src="assets/icons/madness.gif" alt="Wowo_PDF Logo" class="w-full h-full object-contain rounded-lg pulse-heart">
         </div>
-        <div class="text-left">
+        <div class="text-left pr-2">
           <h1 class="text-xl font-extrabold tracking-tight text-rose-950 leading-none">Wowo_PDF</h1>
           <p class="text-[10px] text-rose-400 font-semibold tracking-wide mt-1">Web Edition</p>
         </div>
@@ -105,8 +105,8 @@
         <span id="headerStatusText" class="text-xs font-bold text-rose-900 tracking-wide">Ready to go!</span>
       </div>
 
-      <!-- Sisi Kanan: Status Toggle Network & Logout Button -->
-      <div class="flex items-center space-x-3">
+      <!-- Sisi Kanan: Status Toggle Network & Logout Button (Solid) -->
+      <div class="flex items-center space-x-3 header-actions-solid p-1.5 rounded-full border border-rose-200">
         <div class="flex items-center gap-2 bg-rose-50 p-1 px-2.5 rounded-full border border-rose-200 shadow-inner">
           <div id="statusToggleTrack" class="w-9 h-5 bg-rose-500 rounded-full p-0.5 no-init-transition flex items-center cursor-default">
             <div id="statusToggleCircle" class="w-3.5 h-3.5 bg-white rounded-full shadow-md transform translate-x-4 no-init-transition"></div>
@@ -180,7 +180,8 @@
         <div id="controls-watermark" class="space-y-3">
           <h3 class="text-xs font-bold text-rose-950 tracking-wide border-b border-rose-200 pb-1.5">Input Documents</h3>
 
-          <div class="border-2 border-dashed border-rose-300 bg-rose-50 hover:bg-rose-200/50 rounded-xl p-2.5 text-center flex flex-col items-center justify-center space-y-1 transition-all duration-200 hover:scale-[1.01] cursor-pointer group" onclick="document.getElementById('mergeFiles').click()">
+          <!-- Tombol Upload PDF (Solid) -->
+          <div class="border-2 border-dashed border-rose-300 btn-solid-action rounded-xl p-2.5 text-center flex flex-col items-center justify-center space-y-1 transition-all duration-200 hover:scale-[1.01] cursor-pointer group" onclick="document.getElementById('mergeFiles').click()">
             <span class="text-xl transform group-hover:scale-110 transition-transform">📚</span>
             <p class="text-xs font-bold text-rose-900">Pilih File PDF</p>
             <p class="text-[9px] text-rose-400">Bisa banyak PDF (Auto Merge)</p>
@@ -190,7 +191,8 @@
             </button>
           </div>
 
-          <div class="border-2 border-dashed border-pink-300 bg-pink-50 hover:bg-pink-100/60 rounded-2xl p-2.5 text-center flex flex-col items-center justify-center space-y-1 transition-all duration-200 hover:scale-[1.01] cursor-pointer group" onclick="document.getElementById('bgFile').click()">
+          <!-- Tombol Upload Gambar Background (Solid) -->
+          <div class="border-2 border-dashed border-pink-300 btn-solid-action rounded-2xl p-2.5 text-center flex flex-col items-center justify-center space-y-1 transition-all duration-200 hover:scale-[1.01] cursor-pointer group" onclick="document.getElementById('bgFile').click()">
             <span class="text-xl transform group-hover:scale-110 transition-transform">🖼️</span>
             <p class="text-xs font-bold text-rose-900">Gambar Background</p>
             <p class="text-[9px] text-rose-400">PNG / JPG </p>
@@ -216,7 +218,7 @@
         <div id="controls-esign" class="space-y-3 hidden">
           <h3 class="text-xs font-bold text-rose-950 tracking-wide border-b border-rose-200 pb-1.5">E-Sign & Stamp Settings</h3>
 
-          <div class="border-2 border-dashed border-rose-300 bg-rose-50 hover:bg-rose-200/50 rounded-xl p-3 text-center flex flex-col items-center justify-center space-y-1.5 transition-all duration-200 cursor-pointer group" onclick="document.getElementById('esignImgInput').click()">
+          <div class="border-2 border-dashed border-rose-300 btn-solid-action rounded-xl p-3 text-center flex flex-col items-center justify-center space-y-1.5 transition-all duration-200 cursor-pointer group" onclick="document.getElementById('esignImgInput').click()">
             <input type="file" id="esignImgInput" multiple accept="image/png, image/jpeg, image/jpg, image/webp" class="hidden" onchange="handleEsignUpload(this)">
             <button class="px-3 py-1.5 bg-rose-500 group-hover:bg-rose-600 text-white text-xs font-bold rounded-lg shadow-md transition active:scale-95 flex items-center gap-1">
               <span>+</span> Upload E-Sign
@@ -232,7 +234,8 @@
           </div>
         </div>
 
-        <div class="space-y-2 pt-2 border-t border-rose-200">
+        <!-- Section Nama File Output & Download (Solid) -->
+        <div class="space-y-2 pt-2 border-t border-rose-200 output-control-solid p-2.5 rounded-xl">
           <div class="space-y-1">
             <label class="text-[10px] font-bold text-rose-400 uppercase tracking-wider">Nama File Output</label>
             <input type="text" id="outputFileName" value="Wowo_PDF_Document.pdf" class="w-full px-2.5 py-1.5 text-xs bg-white border border-rose-200 rounded-lg focus:outline-rose-500 text-rose-900 font-medium transition">

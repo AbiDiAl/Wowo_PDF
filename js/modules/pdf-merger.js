@@ -56,8 +56,8 @@ function updateFileListUI() {
   let html = '';
   window.selectedPdfFiles.forEach((file, index) => {
     html += `
-      <div class="flex items-center justify-between p-1.5 bg-white border border-slate-200 rounded-lg shadow-sm text-xs mb-1">
-        <span class="truncate font-medium text-slate-700 w-36" title="${file.name}">
+      <div class="pdf-file-item flex items-center justify-between p-1.5 rounded-lg shadow-sm text-xs mb-1">
+        <span class="truncate font-medium w-36" title="${file.name}">
           ${index + 1}. ${file.name}
         </span>
         <div class="flex items-center space-x-1">

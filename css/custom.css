@@ -34,7 +34,80 @@ body.offline-mode .bg-rain-video {
 }
 
 /* --------------------------------------------------
-   Reset Browser Native Password Eye Icon (Mencegah Double Icon)
+   Transparansi Background Kustom (Efek Kaca / Glassmorphism)
+   -------------------------------------------------- */
+
+/* Transparansi Wadah Utama & Area Canvas/Preview */
+#appContainer {
+  background-color: rgba(255, 228, 230, 0.20) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+header, 
+aside, 
+main, 
+#previewViewport {
+  background-color: rgba(255, 241, 242, 0.11) !important;
+  backdrop-filter: blur(50px) !important;
+}
+
+/* --------------------------------------------------
+   Pengecualian Element Solid / Tidak Transparan
+   -------------------------------------------------- */
+
+/* Logo & Judul Kiri Header */
+.brand-logo-solid {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Toggle Status & Tombol Lock Upper Right */
+.header-actions-solid {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Tombol Sidebar Aktif (Merge & Set BG) */
+.tab-btn.active-tab {
+  background-color: #ffffff !important;
+  border-color: #f43f5e !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.3) !important;
+}
+
+/* Tombol Tambah PDF & Add Gambar */
+.btn-solid-action {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* Kartu File Background Terunggah */
+#bgStatusWrapper {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  border-color: #f43f5e !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Nama File di dalam Daftar "Urutan File PDF" */
+.pdf-file-item {
+  background-color: #ffffff !important;
+  color: #881337 !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  border: 1px solid #fecdd3 !important;
+}
+
+/* Kotak Input Nama File Output & Tombol Save Download */
+.output-control-solid {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* --------------------------------------------------
+   Reset Browser Native Password Eye Icon
    -------------------------------------------------- */
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
@@ -49,12 +122,6 @@ input[type="password"]::-ms-clear {
 .tab-btn {
   border: 2px solid transparent;
   transition: all 0.2s ease-in-out;
-}
-
-.tab-btn.active-tab {
-  background-color: rgba(244, 63, 94, 0.15) !important;
-  border-color: #f43f5e !important;
-  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
 }
 
 .tab-btn.active-tab span {
@@ -77,7 +144,7 @@ input[type="password"]::-ms-clear {
 .ambient-glow-wrapper {
   position: relative;
   overflow: hidden;
-  padding: 2px; /* Tebal border ambient */
+  padding: 2px;
 }
 
 .ambient-glow-wrapper::before {
@@ -125,12 +192,8 @@ input[type="password"]::-ms-clear {
 }
 
 @keyframes rotateAmbient {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 body.offline-mode .ambient-glow-wrapper::before,
@@ -148,7 +211,7 @@ body.offline-mode .ambient-glow-wrapper::after {
 }
 
 /* --------------------------------------------------
-   2. Offline Mode (Dark Slate Gray Theme & Glow Effects)
+   2. Offline Mode
    -------------------------------------------------- */
 body.offline-mode {
   background-color: #0f172a !important;
@@ -156,7 +219,7 @@ body.offline-mode {
 }
 
 body.offline-mode #appContainer {
-  background-color: #1e293b !important;
+  background-color: rgba(15, 23, 42, 0.45) !important;
   border-color: #334155 !important;
 }
 
@@ -164,33 +227,22 @@ body.offline-mode header,
 body.offline-mode aside,
 body.offline-mode main,
 body.offline-mode #previewViewport {
-  background-color: #1e293b !important;
+  background-color: rgba(30, 41, 59, 0.35) !important;
   border-color: #334155 !important;
+}
+
+body.offline-mode .brand-logo-solid,
+body.offline-mode .header-actions-solid,
+body.offline-mode .btn-solid-action,
+body.offline-mode #bgStatusWrapper,
+body.offline-mode .pdf-file-item,
+body.offline-mode .output-control-solid {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
 }
 
 body.offline-mode .auth-modal-card {
   background-color: #1e293b !important;
-  border-color: #334155 !important;
-}
-
-body.offline-mode .bg-white\/90,
-body.offline-mode .bg-white\/80,
-body.offline-mode .bg-white\/70,
-body.offline-mode .bg-white,
-body.offline-mode .bg-rose-50\/40,
-body.offline-mode .bg-rose-50\/50,
-body.offline-mode .bg-rose-50\/60,
-body.offline-mode .bg-rose-50\/80,
-body.offline-mode .bg-rose-50,
-body.offline-mode .bg-rose-100\/30,
-body.offline-mode .bg-rose-100\/60,
-body.offline-mode .bg-rose-100\/70,
-body.offline-mode .bg-rose-100\/80,
-body.offline-mode .bg-rose-100,
-body.offline-mode .bg-rose-200\/20,
-body.offline-mode .bg-pink-50\/50,
-body.offline-mode .bg-pink-50 {
-  background-color: #0f172a !important;
   border-color: #334155 !important;
 }
 
@@ -404,8 +456,6 @@ body.offline-mode .esign-box.selected {
 /* --------------------------------------------------
    6. Auth Unlock Transition & Animations
    -------------------------------------------------- */
-
-/* Animasi Modal Menghilang (Fade Out & Scale Down) */
 .auth-modal-exit {
   animation: modalExit 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -423,7 +473,6 @@ body.offline-mode .esign-box.selected {
   }
 }
 
-/* Animasi Aplikasi Utama Muncul Pasca-Unlock */
 .app-unlock-enter {
   animation: appUnlock 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -442,36 +491,23 @@ body.offline-mode .esign-box.selected {
 }
 
 /* --------------------------------------------------
-   7. Animasi Logo Berdetak (Heartbeat Effect khusus elemen Gambar)
+   7. Animasi Logo Berdetak (Heartbeat Effect)
    -------------------------------------------------- */
 @keyframes pulseHeart {
-  0% {
-    transform: scale(1);
-  }
-  14% {
-    transform: scale(1.15);
-  }
-  28% {
-    transform: scale(1);
-  }
-  42% {
-    transform: scale(1.15);
-  }
-  70% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+  100% { transform: scale(1); }
 }
 
 .pulse-heart {
-  display: inline-block !important; /* Memastikan browser mengizinkan transformasi skala pada image */
+  display: inline-block !important;
   animation: pulseHeart 1.4s infinite ease-in-out !important;
   transform-origin: center center !important;
 }
 
-/* Matikan detakan animasi saat dalam mode Offline */
 body.offline-mode .pulse-heart {
   animation: none !important;
 }
