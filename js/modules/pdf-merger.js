@@ -112,7 +112,7 @@ async function updateMergedPreview() {
     if (zoomContainer) {
       zoomContainer.innerHTML = `
         <div id="previewPlaceholder" class="m-auto text-xs text-slate-400 text-center animate-pulse py-12">
-          Upload PDF & Gambar Background di panel kanan untuk melihat preview langsung
+          Upload PDF & Background di panel kanan untuk melihat preview nya
         </div>`;
     }
 
