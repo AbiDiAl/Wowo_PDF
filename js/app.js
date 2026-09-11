@@ -88,7 +88,7 @@ window.applyZoomScale = async function(zoomLevel) {
     if (zoomContainer) {
       zoomContainer.innerHTML = `
         <div id="previewPlaceholder" class="m-auto text-xs text-rose-400 text-center animate-pulse py-12">
-          Upload PDF & Gambar Background di panel kanan untuk melihat preview langsung
+          Upload PDF & Background di panel kanan untuk melihat preview nya
         </div>`;
     }
 
@@ -124,7 +124,7 @@ window.applyZoomScale = async function(zoomLevel) {
       if (!window.selectedPdfFiles || window.selectedPdfFiles.length === 0) {
         zoomContainer.innerHTML = `
           <div id="previewPlaceholder" class="m-auto text-xs text-rose-400 text-center animate-pulse py-12">
-            Upload PDF & Gambar Background di panel kanan untuk melihat preview langsung
+            Upload PDF & Background di panel kanan untuk melihat preview nya
           </div>`;
         if (typeof updatePageUI === 'function') updatePageUI(1, 0);
         break;
